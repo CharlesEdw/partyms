@@ -59,6 +59,14 @@ public class PartyCriteriaRepository {
             predicates.add(criteriaBuilder.like(partyRoot.get("surname"),
             "%" + partySearchCriteria.getSurname() + "%"));
         }
+        if (Objects.nonNull(partySearchCriteria.getOrgname())) {
+            predicates.add(criteriaBuilder.like(partyRoot.get("orgname"),
+            "%" + partySearchCriteria.getOrgname() + "%"));
+        }
+        if (Objects.nonNull(partySearchCriteria.getId())) {
+            predicates.add(criteriaBuilder.like(partyRoot.get("id"),
+            "%" + partySearchCriteria.getId() + "%"));
+        }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 

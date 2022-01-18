@@ -12,9 +12,9 @@ import javax.persistence.Index;
 
 @Entity
 @Table(indexes = {
-    @Index(name = "IdxFirstnameSurname", columnList = "firstname, surname"), 
-    @Index(name = "IdxSurnameFirstname", columnList = "surname, firstname"),
-    @Index(name = "IdxOrgname", columnList = "orgname")
+    @Index(name = "IdxMultiFirstnameSurname", columnList = "firstname, surname ASC", unique = false), 
+    @Index(name = "IdxMultiSurnameFirstname", columnList = "surname, firstname ASC", unique = false),
+    @Index(name = "IdxOrgname", columnList = "orgname ASC", unique = true)
 })
 public class Party implements Serializable {
     @Id
