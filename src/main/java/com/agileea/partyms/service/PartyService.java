@@ -21,13 +21,30 @@ public class PartyService {
         this.partyCriteriaRepository = partyCriteriaRepository;
     }
 
-    public Page<Party> getParties(PartyPage partyPage,
+    public Page<Party> findPartiesBy(PartyPage partyPage,
                                     PartySearchCriteria partySearchCriteria) {
         return partyCriteriaRepository.findAllWithFilters(partyPage, 
                                                             partySearchCriteria);
     }
-    public Party addParty(Party party) {
+
+    public Party readParty(Long id) {
+        return partyRepository.getById(id);
+    }
+
+    public Party createParty(Party party) {
         return partyRepository.save(party);
     }
+
+    public Party updateParty(Party party) {
+        return partyRepository.saveAndFlush(party);
+    }
+
+    public Object deleteById(Party party) {
+        System.out.println("Party Id in Service is: "+party.getId());
+        partyRepository.deleteById(party.getId());
+        return null;
+    }
+
+
     
 }

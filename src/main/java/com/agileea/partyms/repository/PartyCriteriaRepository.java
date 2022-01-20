@@ -64,8 +64,8 @@ public class PartyCriteriaRepository {
             "%" + partySearchCriteria.getOrgname() + "%"));
         }
         if (Objects.nonNull(partySearchCriteria.getId())) {
-            predicates.add(criteriaBuilder.like(partyRoot.get("id"),
-            "%" + partySearchCriteria.getId() + "%"));
+            predicates.add(criteriaBuilder.equal(partyRoot.get("id"),
+            partySearchCriteria.getId()));
         }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
